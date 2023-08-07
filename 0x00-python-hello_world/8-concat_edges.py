@@ -2,4 +2,5 @@
 str = "Python is an interpreted, interactive, object-oriented programming\
  language that combines remarkable power with very clear syntax"
 
-print(str[39:-63] + " with Python")
+print(" ".join(str.split()[5:7]) + " with Python")
+
