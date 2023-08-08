@@ -1,0 +1,4 @@
+#!/bin/bash
+python3 -m py_compile "$PYFILE" -o my_main.pyc
+
+
