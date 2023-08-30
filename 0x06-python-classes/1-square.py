@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" Represents a square of size size"""
+""" Represents a square of size, size"""
 
 
 class Square:
