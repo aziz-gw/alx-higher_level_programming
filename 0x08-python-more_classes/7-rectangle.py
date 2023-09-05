@@ -8,7 +8,14 @@ Defines a rectangle
 class Rectangle:
     """
     Defines a rectangle
+
+    Attributes:
+            number_of_instances: number of Rectangle instances.
     """
+
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
 
         """Initialises a new Rectangle.
@@ -19,6 +26,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -67,7 +75,8 @@ class Rectangle:
 
         rectangle = []
         for i in range(self.__height):
-            [rectangle.append('#') for j in range(self.__width)]
+            [rectangle.append(str(self.print_symbol))
+             for j in range(self.__width)]
             if i != self.__height - 1:
                 rectangle.append("\n")
         return ("".join(rectangle))
@@ -80,7 +89,5 @@ class Rectangle:
 
     def __del__(self):
         """Print a message for every deletion of a Rectangle."""
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-
-
