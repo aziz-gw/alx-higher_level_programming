@@ -1,6 +1,6 @@
-HELP ON THE ADD_INTEGER MODULE
+USAGE OF THE 0-ADD_INTEGER MODULE
 
-The module contains only one function called `add_integer` which adds two numbers (both integers) and returns the result of their addition.
+The module contains a function called `add_integer` that adds two numbers (both integers) and returns the result of their addition.
 
 It works with both integers and floats (which are casted to integers before addition).
 
@@ -61,7 +61,7 @@ TypeError: b must be an integer
 
 
 Infinity and NaN
-================
+=================
 >>> add_integer(float('inf'))
 Traceback (most recent call last):
 OverflowError: cannot convert float infinity to integer
