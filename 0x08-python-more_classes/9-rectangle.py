@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 Defines a rectangle
@@ -83,6 +83,15 @@ class Rectangle:
         if rect_1.area() >= rect_2.area():
             return (rect_1)
         return (rect_2)
+
+    @classmethod
+    def square(cls, size=0):
+        """Returns new Rectangle with width and height equal to size.
+
+        Args:
+            size: width and height of a new Rectangle.
+        """
+        return (cls(size, size))
 
     def __str__(self):
         """ Returns the printable representation of a Rectangle
