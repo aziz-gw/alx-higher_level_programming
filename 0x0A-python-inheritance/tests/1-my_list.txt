@@ -57,11 +57,3 @@ Repeated elements
 >>> my_list = MyList(repeated_el)
 >>> my_list.print_sorted()
 [1, 1, 2, 2, 3]
-
-
-Undefined object
-================
->>> list1.print_sorted()
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'my_list2' is not defined
