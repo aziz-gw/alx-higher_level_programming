@@ -3,5 +3,8 @@
 """Defines a class BaseGeometry"""
 
 
-class BaseGeometry():
+class BaseGeometry:
+    """
+    Define a class BaseGeometry
+    """
     pass
