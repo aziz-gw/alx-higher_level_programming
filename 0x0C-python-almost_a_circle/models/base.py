@@ -34,11 +34,8 @@ class Base:
         Args:
              list_dictionaries (list): a list of dictionaries
         """
-        list_empty = []
-
-        if list_dictionaries is None or list_dictionaries == list_empty:
-            return ("[]")
-
+        if list_dictionaries is None or list_dictionaries == []:
+            return "[]"
         return (json.dumps(list_dictionaries))
 
     @classmethod
@@ -51,13 +48,12 @@ class Base:
             from a Base class
         """
         filename = cls.__name__ + ".json"
-        with open(filename, "w") as file:
+        with open(filename, "w") as jsonfile:
             if list_objs is None:
-                file.write("[]")
+                jsonfile.write("[]")
             else:
-                for obj in list_objs:
-                    list_dicts = obj.to_dictionary()
-                    file.write(Base.to_json_string(list_dicts))
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
@@ -67,10 +63,9 @@ class Base:
         Args:
             json_string (str): a string representing a list of dictionaries.
         """
-        list_empty = []
-        if json_string is None or json_string is list_empty:
-            return list_empty
-        return (json_string)
+        if json_string is None or json_string == "[]":
+            return []
+        return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -98,9 +93,8 @@ class Base:
         """
         filename = str(cls.__name__) + ".json"
         try:
-            with open(filename, "r") as file:
-                list_dicts = Base.from_json_string(file.read())
-                return [cls.create(**dictionary) for dictionary
-                        in list_dicts]
-        except TypeError:
+            with open(filename, "r") as jsonfile:
+                list_dicts = Base.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
             return []
