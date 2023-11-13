@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-function printMsg (proc) {
+function printArg (proc) {
   if (proc.length <= 2) {
     console.log('No argument');
   } else if (proc.length === 3) {
@@ -10,4 +10,4 @@ function printMsg (proc) {
   }
 }
 
-printMsg(process.argv);
+printArg(process.argv);
