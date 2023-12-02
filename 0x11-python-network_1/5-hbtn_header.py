@@ -8,8 +8,20 @@ import sys
 
 url = sys.argv[1]
 
-response = requests.get(url)
+try:
+    # Perform the request
+    response = requests.get(url)
+    # Raise HTTPError for bad responses (4xx and 5xx)
+    response.raise_for_status()
+    # Display the value of X-Request-Id in the response header
+    request_id = response.headers.get('X-Request-Id')
 
-# Display the value of X-Request-Id in the response header
-request_id = response.headers.get('X-Request-Id')
-print(f"{request_id}")
+    if request_id:
+        print(f"{request_id}")
+
+except requests.exceptions.HTTPError as e:
+    # Handle HTTP errors
+    print(f"Error code: {e.response.status_code}")
+except requests.exceptions.RequestException as e:
+    # Handle other request-related errors
+    print(f"Request error: {e}")
