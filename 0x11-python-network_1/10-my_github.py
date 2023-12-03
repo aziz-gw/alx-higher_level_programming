@@ -18,13 +18,15 @@ def get_user_id(username, token):
         user_id = user_data.get('id')
         print(f"{user_id}")
     except requests.RequestException as e:
-        print(f"Error fetching user data: {e}")
+        if response.status_code == 401:
+            print("None")
+        else:
+            print(f"{e}")
         sys.exit(1)
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python github_user_id.py <username> <token>")
         sys.exit(1)
 
     username, token = sys.argv[1], sys.argv[2]
