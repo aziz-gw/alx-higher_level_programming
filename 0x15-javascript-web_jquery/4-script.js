@@ -1,6 +1,6 @@
-const toggleDivEl = $('#toggle_header')
+const toggleDivEl = $('#toggle_header');
 const headerColour = $('header');
 
-toggleDivEl.click(function() {
-    headerColour.toggleClass('red green');
+toggleDivEl.click(function () {
+  headerColour.toggleClass('red green');
 });
